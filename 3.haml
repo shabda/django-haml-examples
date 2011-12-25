@@ -1,0 +1,5 @@
+%h1
+    = poll.question
+%ul
+    -for choice in poll.choice_set.all
+        = choice.choice

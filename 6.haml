@@ -1,0 +1,48 @@
+-extends "site_base.html"
+
+-load biblion_tags
+
+-block body_id
+    blog
+
+-block main_content
+    ."blog-content"
+        ."main"
+            -block blog_content
+        %aside.sidebar
+            .blog-sections
+                -blog_sections as sections
+                    %h4
+                        Categories
+                    %hr
+                    %ul
+                        -for section in sections
+                            -ifequal section.0 "all"
+                                %li
+                                    <a href="{% url blog %}">{{ section.1 }}</a></li>
+                            -else
+                              %li
+                                <a href="{% url blog_section section.0 %}">{{ section.1 }}</a></li>
+
+
+
+            .blog-sections
+                -latest_blog_posts as recent_posts
+                %h4
+                    Recent Posts
+                %hr
+                %ul
+                -for post in recent_posts
+                    <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+            .blog-sections
+                %p
+                %b
+                    Pinax
+                is an open-source platform built on the Django Web Framework.
+                
+                %p
+                    By integrating numerous reusable Django apps and providing starter projects and infrastructure tools, Pinax takes care of the things that many sites have in common so you can focus on what makes your site different.
+                
+                %p
+                    Pinax has been used for everything from social networks to conference websites, and from intranets to online games.
+

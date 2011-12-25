@@ -1,0 +1,15 @@
+<div id='profile'>
+    <div class='left column'>
+        <div id='date'>2010/02/18</div>
+        <div id='address'>Toronto, ON</div>
+    </div>
+    <div class='right column'>
+        <div id='bio'>Jesse Miller</div>
+    </div>
+  <ul id='atheletes'>
+      {% for athelete in athelete_list %}
+          <li id='athelete_{{ athelete.pk }}' class='athelete'>{{ athelete.name }}</li>
+      {% endfor %}
+  </ul>
+</div>
+
